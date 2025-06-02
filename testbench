@@ -22,3 +22,4 @@ end
 endmodule
 //testbench for all 3 models are same 
 //only the name of the model will be changed
+//for structural model we also use dumpvars(1)
