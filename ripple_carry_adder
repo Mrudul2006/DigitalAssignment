@@ -23,3 +23,33 @@ module full_ripple_carry_adder(A, B, Cin, Sum, Cout);
     full_adder FA6 (A[6], B[6], carry[5], Sum[6], carry[6]);
     full_adder FA7 (A[7], B[7], carry[6], Sum[7], Cout);
 endmodule
+
+
+testbench
+module tb_full_ripple_carry_adder;
+    reg [7:0] A, B;
+    reg Cin;
+    wire [7:0] Sum;
+    wire Cout;
+
+    full_ripple_carry_adder uut (
+        .A(A),
+        .B(B),
+        .Cin(Cin),
+        .Sum(Sum),
+        .Cout(Cout)
+    );
+
+    initial begin
+        $dumpfile("waveform.vcd");
+      $dumpvars(1, tb_full_ripple_carry_adder);
+
+        A = 8'b00000000; B = 8'b00000000; Cin = 0; #10;
+        A = 8'b00000001; B = 8'b00000001; Cin = 0; #10;
+        A = 8'b10101010; B = 8'b01010101; Cin = 0; #10;
+        A = 8'b11111111; B = 8'b00000001; Cin = 0; #10;
+        A = 8'b11111111; B = 8'b11111111; Cin = 1; #10;
+
+        $finish;
+    end
+endmodule
