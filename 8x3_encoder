@@ -1,0 +1,27 @@
+module encoder_8x3(
+ input D0,D1,D2,D3,D4,D5,D6,D7,
+ input en,
+ output A,B,C);
+
+wire A1,A2,A3,A4;
+ and(A1,D7,en);
+  and(A2,D6,en);
+   and(A3,D5,en);
+    and(A4,D4,en);
+   or(A,A1,A2,A3,A4);
+
+   wire B1,B2,B3,B4;
+ and(B1,D2,en);
+  and(B2,D3,en);
+   and(B3,D6,en);
+    and(B4,D7,en);
+  or(B,B1,B2,B3,B4);
+
+  wire C1,C2,C3,C4;
+ and(C1,D1,en);
+  and(C2,D3,en);
+   and(C3,D5,en);
+    and(C4,D7,en);
+  or(C,C1,C2,C3,C4);
+
+ endmodule 
