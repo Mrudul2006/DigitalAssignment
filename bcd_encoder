@@ -1,0 +1,10 @@
+module bcd_encoder (
+input D0, D1, D2, D3, D4, D5, D6, D7, D8, D9,
+  output A, B, C, D
+  );
+
+   assign A = D1|D3|D5|D7|D9;                 
+  assign B = D2|D3|D6|D7;
+  assign C = D4|D5|D6|D7;
+  assign D = D8|D9;   
+  endmodule
