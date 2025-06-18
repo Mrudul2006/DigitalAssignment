@@ -1,0 +1,13 @@
+module mux_16x1_function (
+input [15:0] D,
+input [3:0] S,
+ output Y );
+  function mux;
+  input [15:0] D;
+ input [3:0] S;
+  begin
+    mux = D[S];
+  end
+    endfunction  
+    assign Y = mux(D, S);
+       endmodule
