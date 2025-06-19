@@ -1,0 +1,31 @@
+module multiplier_16bit (
+  input  [15:0] a, b,
+  output [31:0] p
+);
+  wire [15:0] m [15:0];
+  wire [31:0] s [14:0];
+  genvar i;
+  generate
+    for (i = 0; i < 16; i = i + 1) begin
+      assign m[i] = {16{a[i]}} & b;
+    end
+  endgenerate
+
+  assign s[0]  = {16'b0, m[0]};
+  assign s[1]  = s[0]  + {15'b0, m[1], 1'b0};
+  assign s[2]  = s[1]  + {14'b0, m[2], 2'b0};
+  assign s[3]  = s[2]  + {13'b0, m[3], 3'b0};
+  assign s[4]  = s[3]  + {12'b0, m[4], 4'b0};
+  assign s[5]  = s[4]  + {11'b0, m[5], 5'b0};
+  assign s[6]  = s[5]  + {10'b0, m[6], 6'b0};
+  assign s[7]  = s[6]  + {9'b0,  m[7], 7'b0};
+  assign s[8]  = s[7]  + {8'b0,  m[8], 8'b0};
+  assign s[9]  = s[8]  + {7'b0,  m[9], 9'b0};
+  assign s[10] = s[9]  + {6'b0,  m[10], 10'b0};
+  assign s[11] = s[10] + {5'b0,  m[11], 11'b0};
+  assign s[12] = s[11] + {4'b0,  m[12], 12'b0};
+  assign s[13] = s[12] + {3'b0,  m[13], 13'b0};
+  assign s[14] = s[13] + {2'b0,  m[14], 14'b0};
+  assign p = s[14] + {1'b0,  m[15], 15'b0};
+
+endmodule
