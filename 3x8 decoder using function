@@ -1,0 +1,13 @@
+module 3x8_decoder(
+input [2:0] A,
+output [7:0] D
+);
+
+function [7:0] decode;
+input [2:0] A;
+ begin 
+     decode= 1 << A
+ end
+ endfunction
+ assign D = decode(A);
+ endmodule
