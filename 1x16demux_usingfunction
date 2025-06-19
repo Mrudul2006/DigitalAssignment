@@ -1,0 +1,15 @@
+module demux_1x16_function (
+  input D,
+  input [3:0] S,
+  output [15:0] Y
+);
+  function [15:0] demux;
+  input D;
+  input [3:0] S;
+    begin
+     demux = 16'b0;
+     demux[S] = D;
+    end
+  endfunction
+  assign Y = demux(D, S);
+  endmodule
